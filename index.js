@@ -3,6 +3,14 @@ const path=require('path')
 const app = express()
 const port = 3000
 
+//custom middleware
+const alifMiddleware=(req,res,next)=>{
+console.log(req)
+next()
+}
+
+app.use(express.static(path.join(__dirname,'public')))
+app.use(alifMiddleware)
 
 app.get('/hello', (req, res) => {
   res.send('Hello World!')
