@@ -4,16 +4,16 @@ const app = express()
 const port = 3000
 
 //custom middleware
-const alifMiddleware=(req,res,next)=>{
-console.log(req)
-next()
-}
+// const alifMiddleware=(req,res,next)=>{
+// console.log(req) 
+// next()
+// }
 
 app.use(express.static(path.join(__dirname,'public')))
-app.use(alifMiddleware)
+// app.use(alifMiddleware)
 
-app.get('/hello', (req, res) => {
-  res.send('Hello World!')
+app.get('/hello/:name', (req, res) => {
+  res.send('Hello World!'+req.params.name)
 })
 app.get('/about', (req, res) => {
     //res.sendFile(path.join(__dirname,'index.html'))
